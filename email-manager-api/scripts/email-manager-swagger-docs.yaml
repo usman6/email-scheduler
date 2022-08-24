@@ -1,0 +1,107 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: email-manager
+  contact: {}
+host: example.com
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /api/v1/emails:
+    get:
+      summary: EmailGetAll
+      tags:
+      - Email
+      operationId: EmailGetAll
+      deprecated: false
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/v1/user:
+    post:
+      summary: CreateUser
+      tags:
+      - User
+      operationId: UserCreate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/UserCreateRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/v1/user/sent/emails:
+    get:
+      summary: GetUserAndSentEmails
+      tags:
+      - User
+      operationId: GetUserWithSentEmails
+      deprecated: false
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /status/health:
+    get:
+      summary: home
+      tags:
+      - Misc
+      operationId: home
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /status:
+    get:
+      summary: health
+      tags:
+      - Misc
+      operationId: health
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  UserCreateRequest:
+    title: UserCreateRequest
+    example:
+      fullName: Martian
+      email: martian@xyz.com
+    type: object
+    properties:
+      fullName:
+        type: string
+      email:
+        type: string
+    required:
+    - fullName
+    - email
+tags:
+- name: Email
+- name: User
+  description: ''

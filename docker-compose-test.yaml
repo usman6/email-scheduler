@@ -1,0 +1,68 @@
+version: "3.9"
+services:
+    kafka_test:
+        image: "johnnypark/kafka-zookeeper"
+        ports:
+            - "2181:2181"
+            - "9092:9092"
+    mysql_db_test:
+        image: mysql:latest
+        restart: unless-stopped
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - "3306:3306"
+        expose:
+            - "3306"
+        volumes:
+            - ./mysql-db-setup:/docker-entrypoint-initdb.d
+    email_manager_api_test:
+        build:
+            context: ./email-manager-api
+        volumes:
+            - ./email-manager-api:/opt/email-manager-api
+            - /opt/email-manager-api/node_modules
+        command: node ./src/bin/www
+        restart: unless-stopped
+        ports:
+            - "8080:8080"
+        environment:
+            DATABASE_URL: mysql://root:root@mysql_db:3306/email_manager
+            HOST: "0.0.0.0"
+        expose:
+            - "8080"
+        depends_on:
+            - mysql_db_test
+            - kafka_test
+    email_processor_test:
+        build:
+            context: ./email-processor
+        volumes:
+            - ./email-processor:/opt/email-processor
+            - /opt/email-processor/node_modules
+        restart: unless-stopped
+        environment:
+            API_URL: "http://email_manager_api_test:8080"
+            KAFKA_CLUSTER: "kafka:9092"
+        command: node ./src/main.js
+        depends_on:
+            - email_manager_api_test
+            - kafka_test
+    email_sender_test:
+        build:
+            context: ./email-sender
+        volumes:
+            - ./email-sender:/opt/email-sender
+            - /opt/email-sender/node_modules
+        environment:
+            KAFKA_CLUSTER: "kafka:9092"
+            SG_KEY: "SG.re8ddlMTRum5F4RdrsdklfjM67yg.JlEuveGDwxuAxe7LcIxpvKlgshVbskW4we8PplYQ34WIRGY1"
+            FROM_EMAIL: "sdfsdf@gmail.com"
+            EMAIL_RETRY_COUNT: 1
+        restart: unless-stopped
+        command: node ./src/main.js
+        depends_on:
+            - email_processor_test
+            - kafka_test
+

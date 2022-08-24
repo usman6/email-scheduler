@@ -1,0 +1,10 @@
+{
+    "nodeEnv": "development",
+    "kafkaCluster": "localhost:9092",
+    "kafkaGroupId": "email_sender_consumer_group_01",
+    "kafkaEmailTopic": "email",
+    "fromEmail":"jlskjdls",
+    "sgKey":"",
+    "emailRetryCount": 5
+
+}

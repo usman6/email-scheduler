@@ -1,0 +1,9 @@
+{
+    "nodeEnv": "development",
+    "host": "localhost",
+    "port": 8080,
+    "databaseUrl": "mysql://root:root@127.0.0.1:3306/email_manager",
+    "kafkaCluster": "localhost:9092",
+    "kafkaTopicNotificationsRaw": "notifications-raw",
+    "baseUrl": "/"
+}

@@ -1,0 +1,10 @@
+{
+    "nodeEnv": "development",
+
+    "apiUrl": "http://localhost:8080",
+
+
+    "kafkaCluster": "localhost:9092",
+    "kafkaEmailTopic": "email"
+
+}

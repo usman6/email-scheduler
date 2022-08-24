@@ -1,0 +1,11 @@
+#exclude files
+email-manager-api/package-lock.json
+email-processor/package-lock.json
+email-sender/package-lock.json
+start.sh
+start.ps1
+
+# exclude directories
+email-manager-api/node_modules
+email-processor/node_modules
+email-sender/node_modules

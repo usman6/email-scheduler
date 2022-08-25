@@ -1,4 +1,6 @@
 swagger: '2.0'
+host: 127.0.0.1:8080
+schemes: http
 info:
   version: '1.0'
   title: email-manager
@@ -12,7 +14,7 @@ consumes:
 produces:
 - application/json
 paths:
-  /api/v1/emails:
+  /api/v1/email:
     get:
       summary: EmailGetAll
       tags:

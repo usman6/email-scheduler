@@ -17,7 +17,7 @@ Clone the repository and run it.
   cd email-scheduler
   docker-compose up
 ```
-Emails are automatically created in database
+Emails are created in database on application startup.
 
 Create user...
 

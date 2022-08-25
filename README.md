@@ -13,7 +13,7 @@ Application has five main components i.e. APIs, database, kafka, email scheduler
 Clone the repository and run it.
 
 ```bash
-  git clone https://github.com/usman6/email-scheduler.git
+  [git clone https://github.com/usman6/email-scheduler.git](https://github.com/usman6/email-scheduler.git)
   cd email-scheduler
   docker-compose up
 ```

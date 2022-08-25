@@ -77,7 +77,7 @@ It is executed by a cron job once clock completes a minute.
 
 It iterates through users and then compares the sent emails of each user with list of all emails and create an array of ```emailId```'s that have not been sent to that user yet. An ```emailId``` is randomly selected from previously created array. Then based upon randomly selected ```emailId``` in previous step, it gets the email from map of all emails and create a ```sendEmail``` object comprising of user email, email subject and email text. This email object is sent to kafka topic named 'email'.
 
-While iterating through users and after producing email object to kafka topic, it creates an object containing ```userId``` and ```emailId``` and adds it to an array. Before finishing upon ```cron-job```, this array of objects is posted to ```/api/v1/user-email``` in single api call and ```users-emails``` association is updated in database. This is basically for keeping track of sent emails for users. 
+While iterating through users and after producing email object to kafka topic, it creates an object containing ```userId``` and ```emailId``` and adds it to an array. Before exiting ```cron-job```, this array of objects is posted to ```/api/v1/user-email``` in single api call and ```users-emails``` association is updated in database. This is basically for keeping track of sent emails for users. 
 
 ## 3) Email Sender
 

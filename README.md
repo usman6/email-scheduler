@@ -6,7 +6,7 @@ Application has five main components i.e. APIs, database, kafka, email scheduler
 
 - Docker
 - Docker Compose
-- sendgrid API key (It's not a hard requirement, emails will only be sent if valid api key and from email has been provided. Otherwise the invalid api_key errors will appear in logs but the functionality of application will not be impacted. It will needs to be pasted in ```docker-compose.yaml``` file along with associated email.
+- ```sendgrid API key``` (It's not a hard requirement, emails will only be sent if valid api key and from email has been provided. Otherwise the invalid api_key errors will appear in logs but the functionality of application will not be impacted. It will needs to be pasted in ```docker-compose.yaml``` file along with associated email.
 
 # Setting up & Running
 

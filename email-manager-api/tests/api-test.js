@@ -13,7 +13,7 @@ describe('Email', () => {
                 .get('/api/v1/email')
                 .end((err, res) => {
                     (res).should.have.status(200);
-                    (res.body).should.be.a('object');
+                    (res.body).should.be.a('array');
                     done();
                 });
         });
@@ -27,7 +27,7 @@ describe('Create user', () => {
             .set('content-type', 'application/json')
             .send({
                 "fullName": "Martian",
-                "email": "martian@xyz.com"
+                "email": "martian"+[...Array(10)].map(_=>Math.random()*10|0).join``+"@xyz"+[...Array(10)].map(_=>Math.random()*10|0).join``+".com"
             })
             .end((err, res) => {
                 (res).should.have.status(200);
@@ -61,7 +61,7 @@ describe('User and Sent Emails', () => {
                 .get('/api/v1/user/sent/emails')
                 .end((err, res) => {
                     (res).should.have.status(200);
-                    (res.body).should.be.a('object');
+                    (res.body).should.be.a('array');
                     done();
                 });
         });

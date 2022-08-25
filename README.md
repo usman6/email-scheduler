@@ -89,7 +89,7 @@ The part where a user's list of sent emails is updated in email scheduler could 
 
 ## 4) Tests
 
-Some unit tests have been added in email-manager-api. Integration tests can also be added by mocking kafka and sendgrid. A separate docker file ```docker-compose-test.yaml``` is ther to run test instances.
+Some unit tests have been added in email-manager-api. Integration tests can also be added by mocking kafka and sendgrid. A separate docker file ```docker-compose-test.yaml``` is there to run test instances.
 
 # Design Philosophy
  The ```email-processor``` is intensive in compute usage as compared to ```email-sender```. So in case of future scaling, for a number of emails, we will need more instances of ```email-processor``` as compared ```email-sender```. Since these are modular components, scaling will be easier to achieve. Moreover, email-sender is designed to connect to kafka topic in ```consumer-group``` mode which ensures that a new message will only be delivered once and to only one instance of all the instances in group.

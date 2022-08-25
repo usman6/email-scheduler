@@ -81,7 +81,7 @@ While iterating through users and after producing email object to kafka topic, i
 
 ## 3) Email Sender
 
-This is the final step in process of sending an email to respective user. Emails are picked up synchronously and sent to users using sendgrid api. If api key is invalid, it logs an error and it never crashes. It accepts an environment variable named ```MAX_RETRY_COUNT```. This variable specifies the maximum number of retries after failing which no further attempts will be made to resend an email. The consumer is attached to kafka topic as a group which will be beneficial in case of horizontal scaling having multiple senders for sending emails.
+This is the final step in process of sending an email to respective user. Emails are picked up synchronously and sent to users using sendgrid api. If api key is invalid, it logs an error and it never crashes. If there is an error while sending email, the email is forwarded to kafka topic for retry and errors are logged. It accepts an environment variable named ```MAX_RETRY_COUNT```. This variable specifies the maximum number of retries after failing which no further attempts will be made to resend that email. The consumer is attached to kafka topic as a group which will be beneficial in case of horizontal scaling having multiple senders for sending emails.
 
 In case of restart after a crash, ```email-sender``` is set to start consuming messages from ```email``` topic from where it left last hence avoiding duplicates. 
 

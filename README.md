@@ -30,6 +30,9 @@ curl --location --request POST '127.0.0.1:8080/api/v1/user' \
 }'
 ```
 
+Once the cron job runs after user is created, ```email-processor``` will print the email object before producing it to kafka topic. 
+Details about sending of emails will also be clearly visible in ```email-sender``` logs.
+
 # Swagger Documentation
 
 Swagger UI based API docs are available at the following end point. It is for demonstration purpose. It is not a complete documentation. Postman collection located under ```/email-manager-api/scripts``` contains complete documentation.

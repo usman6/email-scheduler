@@ -1,6 +1,6 @@
 # Overview
 
-Application has five main components i.e. APIs, database, kafka, email scheduler and email sender. User can be created via api. There are other apis as well for querying, deletion and pagination fetching. These apis are there for demonstration purposes. A pagination framework and query builder as  been implemented as well. Application starts with a command. As soon as the user is created, it will start to receive emails.
+Application has five main components i.e. APIs, database, kafka, email scheduler and email sender. User can be created via api. There are other apis as well for querying, deletion and pagination fetching. These apis are there for demonstration purposes. A pagination framework and query builder has been implemented as well. Application starts with a command. As soon as the user is created, it will start to receive emails.
 
 # Prerequisites
 

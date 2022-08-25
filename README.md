@@ -85,7 +85,7 @@ This is the final step in process of sending an email to respective user. Emails
 
 In case of restart after a crash, ```email-sender``` is set to start consuming messages from ```email``` topic from where it left last hence avoiding duplicates. 
 
-The part where a user's list of sent email is updated in email scheduler could have been implemented in email sender instead of email scheduler so that it only updates the users sent emails list if email is sent successfully. I have kept it in scheduler as without valid sendgrid api key all emails would be retried.
+The part where a user's list of sent emails is updated in email scheduler could have been implemented in email sender instead of email scheduler so that it only updates the users sent emails list if email is sent successfully. I have kept it in scheduler as without valid sendgrid api key all emails would be retried. This approach will also prevent rescheduling of emails that cannot be sent due to an invalid email address.
 
 ## 4) Tests
 
